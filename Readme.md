@@ -56,14 +56,14 @@ El missatge (tant de query com de resposta) ha de contenir username, noteId i ex
 * noteId: el necessitem per saber de quina nota es tracta. El microservei d'usuaris no el necessita però sí el de notes quan reb la resposta
 * existeix: és la resposta de si l'usuari existeix o no. No caldria al missatge de pregunta.
 
-Us proposo que tots els missatges tinguin els mateixos camps per simplificar (usar la mateixa estructura a la pregunta i la resposta) però
+Us proposo que tant els missatges de query com de resposta tinguin els mateixos camps per simplificar (usar la mateixa estructura a la pregunta i la resposta) però
 vosaltres decidiu. Proposo el següent record com a missatge, però el podeu implementar com més us convingui:
 ```
 record UserNoteExistsMessage(String username, Long noteId, Boolean exists) {}
 ```
 Dels 3 punts d'aquest exercici, 2 punts pel funcionament i 1 es valorarà que es faci en arquitectura hexagonal. Per fer-ho us proposo:
 * Microservei notes:
-  * Port de sortida per enviar el missatge preguntant sobre l'existència d'un usuari. També haureu de fer l'adaptador corresponent (el que realment envia el missatge)
+  * Port de sortida per enviar el missatge preguntant sobre l'existència d'un usuari. També haureu de fer l'adaptador corresponent (el que realment envia el missatge).
   * Adaptador per rebre el missatge de resposta. Aquest adaptador haurà d'usar el port d'entrada *UpdateNoteUserExists* per actualitzar la nota. 
     Seria com un adaptador web, però que en lloc d'esperar crides REST espera missatges del broker.
 * Microservei users:
