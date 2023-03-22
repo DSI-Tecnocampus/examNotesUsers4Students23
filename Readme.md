@@ -46,14 +46,14 @@ i aconseguir un 12, una nota superior a 10, que pot anar bé de cara a fer la mi
   es retorni una llista amb una única nota que tingui per títol "Servei de notes inaccessible". A la resta de propietats de la nota poseu el
   que vulgueu. [Anar a TODO 2]
 * **TODO 3:** (Val 3 punts) Volem que quan es crea una nota (crida POST al microservei de notes) aquesta s'escrigui a la bbdd amb l'atribut checked
-a fals i de forma asíncrona es comprovi si l'usuari existeix. Sí la resposta, també asíncrona, és afirmativa aleshores es modifica la nota de la
+a fals i de forma asíncrona es comprovi si l'usuari existeix. Si la resposta, també asíncrona, és afirmativa aleshores es modifica la nota de la
 bbdd amb l'atribut checked a true i en cas contrari s'esborra. Per tant:
   * El microservei de notes ha d'enviar un missatge per preguntar de l'existència d'un usuari (TODO 3.1), i rebre un altre missatge com a resposta a la pregunta (TODO 3.2).
   * El microservei d'usuaris ha de rebre un missatge preguntant sobre un usuari i enviar un missatge amb la resposta (TODO 3.3) 
 
 El missatge (tant de query com de resposta) ha de contenir username, noteId i existeix (true/false):
 * username: el nom de l'usuari pel que preguntem (no seria imprescindible a la resposta)
-* noteId: el necessitem per saber de quina nota es tracta. El microservei d'usuaris no el necessita però sí el de notes quan reb la resposta
+* noteId: el necessitem per saber de quina nota es tracta. El microservei d'usuaris no el necessita, però sí el de notes quan reb la resposta
 * existeix: és la resposta de si l'usuari existeix o no. No caldria al missatge de pregunta.
 
 Us proposo que tant els missatges de query com de resposta tinguin els mateixos camps per simplificar (usar la mateixa estructura a la pregunta i la resposta) però
@@ -71,7 +71,7 @@ Dels 3 punts d'aquest exercici, 2 punts pel funcionament i 1 es valorarà que es
     el port de sortida *UsersPort*, concretament el mètode *existsUser*. Per enviar el missatge no cal que implementeu un port de sortida ja que
     en un sol mètode podeu rebre consulta, comprovar usuari, i enviar resposta.
 
-* **TODO 4:** (Val 2 punts) Afegir un discovery service. Us heu d'assegurar que el restTemplate del primer i segon exercici esta balancejat (laodbalance) 
+* **TODO 4:** (Val 2 punts) Afegir un discovery service. Us heu d'assegurar que el restTemplate del primer i segon exercici esta balancejat (loadbalance) 
 * **TODO 5:** (Val 2 punts) Afegir un edge (gateway) service que redireccioni les crides /users/* cap al microservei d'usuaris i les crides
 /notes/* cap al microservei de notes. 
  
