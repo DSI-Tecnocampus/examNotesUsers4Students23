@@ -55,6 +55,7 @@ El missatge (tant de query com de resposta) ha de contenir username, noteId i ex
 * username: el nom de l'usuari pel que preguntem (no seria imprescindible a la resposta)
 * noteId: el necessitem per saber de quina nota es tracta. El microservei d'usuaris no el necessita però sí el de notes quan reb la resposta
 * existeix: és la resposta de si l'usuari existeix o no. No caldria al missatge de pregunta.
+
 Us proposo que tots els missatges tinguin els mateixos camps per simplificar (usar la mateixa estructura a la pregunta i la resposta) però
 vosaltres decidiu. Proposo el següent record com a missatge, però el podeu implementar com més us convingui:
 ```
