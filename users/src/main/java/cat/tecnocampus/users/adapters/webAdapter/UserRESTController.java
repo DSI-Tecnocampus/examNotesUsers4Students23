@@ -1,8 +1,10 @@
 package cat.tecnocampus.users.adapters.webAdapter;
 
 import cat.tecnocampus.users.application.portsIn.UserUseCases;
+import cat.tecnocampus.users.application.service.UserDoesNotExistException;
 import cat.tecnocampus.users.domain.User;
 import cat.tecnocampus.users.domain.UserWithNotes;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,4 +42,12 @@ class UserRESTController {
     public void deleteUser(@PathVariable String username) {
         userUseCases.deleteUser(username);
     }
+
+    @ExceptionHandler({UserDoesNotExistException.class})
+    @ResponseBody
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String userDoesNotExist(Exception exception) {
+        return exception.getMessage();
+    }
+
 }

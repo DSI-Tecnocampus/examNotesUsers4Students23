@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsersRepository extends JpaRepository<UserEntity, String> {
 
@@ -22,5 +23,5 @@ public interface UsersRepository extends JpaRepository<UserEntity, String> {
         from user_lab u
         where u.username = :userName
     """)
-    User findUserByUsername(@Param("userName") String userName);
+    Optional<User> findUserByUsername(@Param("userName") String userName);
 }

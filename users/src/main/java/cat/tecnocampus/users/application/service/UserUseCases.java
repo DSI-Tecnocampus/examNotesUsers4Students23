@@ -55,7 +55,7 @@ class UserUseCases implements cat.tecnocampus.users.application.portsIn.UserUseC
 
     @Override
     public UserWithNotes getUser(String username) {
-        User user = usersPort.findByUsername(username);
+        User user = usersPort.findByUsername(username).orElseThrow(() -> new UserDoesNotExistException(username));
         List<Note> notes = getUserNotes(username);
         UserWithNotes userWithNotes = new UserWithNotes(user.username(), user.name(), user.secondName(), user.email(), notes);
         return userWithNotes;

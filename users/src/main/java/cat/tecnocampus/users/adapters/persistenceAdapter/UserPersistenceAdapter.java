@@ -5,6 +5,7 @@ import cat.tecnocampus.users.domain.User;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserPersistenceAdapter implements UsersPort {
@@ -29,7 +30,7 @@ public class UserPersistenceAdapter implements UsersPort {
     }
 
     @Override
-    public User findByUsername(String userName) {
+    public Optional<User> findByUsername(String userName) {
         return usersRepository.findUserByUsername(userName);
     }
 

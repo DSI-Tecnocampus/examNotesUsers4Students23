@@ -3,13 +3,14 @@ package cat.tecnocampus.users.application.portsOut;
 import cat.tecnocampus.users.domain.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UsersPort {
     void insert(User userLab);
 
     List<User> findAll();
 
-    User findByUsername(String userName);
+    Optional<User> findByUsername(String userName);
 
     void delete(String username);
 
